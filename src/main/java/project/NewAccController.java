@@ -15,11 +15,29 @@ public class NewAccController extends StartpageController{
     private PasswordField inpPassword1, inpPassword2;
     @FXML
     private Hyperlink logInBtn2, gameLink;
+
+    //metode som sender deg til spillet etter en validering
     @FXML
      public void validateRegister(ActionEvent event) throws IOException{
-        System.out.println("hei");
-        inpText.setText("hey");
+        this.validatePassword(inpPassword1);     
+        if (inpPassword1.getLength() != inpPassword2.getLength()) throw new IllegalArgumentException("passwords test");
+        else if (!inpPassword1.getText().equals(inpPassword2.getText())) throw new IllegalArgumentException("passwords not equal");
+        
         this.newWindow(event);
+    }
+
+    //metode som validerer passordet
+    private void validatePassword(PasswordField password){
+        String password_string = password.getText().toString();
+        char[] chars = password_string.toCharArray();
+
+        //lager en løkke der jeg sjekker om en av karakterene i passordet er et tall
+        boolean hasDigit = false;
+        for (char c : chars) {
+            if (Character.isDigit(c)) hasDigit = true;
+        }
+        if (!hasDigit) throw new IllegalArgumentException("password must contain at least a number"); //hvis det ikke finnes et tall kastes en feilmelding 
+        if (password_string.equals(password_string.toLowerCase())) throw new IllegalArgumentException("password must contain at least one capital letter"); //passordet må inneholde minst en stor bokstav
     }
 
      @FXML
