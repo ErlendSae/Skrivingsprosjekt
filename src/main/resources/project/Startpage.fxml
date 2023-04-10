@@ -8,13 +8,13 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #e9e9e9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.StartpageController">
    <children>
-      <Button layoutX="275.0" layoutY="396.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="90.0" text="Play as guest" />
-      <Button layoutX="530.0" layoutY="14.0" mnemonicParsing="false" onAction="#loginClick" prefHeight="49.0" prefWidth="96.0" style="-fx-background-color: #D8D8D8;" text="Log in">
+      <Button fx:id="gameBtn" layoutX="275.0" layoutY="396.0" mnemonicParsing="false" onAction="#newWindow" prefHeight="39.0" prefWidth="90.0" text="Play as guest" />
+      <Button fx:id="logInBtn" layoutX="530.0" layoutY="14.0" mnemonicParsing="false" onAction="#newWindow" prefHeight="49.0" prefWidth="96.0" style="-fx-background-color: #D8D8D8;" text="Log in">
          <font>
             <Font name="Castellar" size="14.0" />
          </font>
       </Button>
-      <Hyperlink layoutX="523.0" layoutY="65.0" onAction="#createAccountClick" text="Create account">
+      <Hyperlink fx:id="registerBtn" layoutX="523.0" layoutY="65.0" onAction="#newWindow" text="Create account">
          <font>
             <Font name="Castellar" size="10.0" />
          </font></Hyperlink>
