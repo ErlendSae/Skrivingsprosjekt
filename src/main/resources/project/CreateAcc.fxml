@@ -41,7 +41,7 @@
             <Font name="Castellar" size="11.0" />
          </font>
       </Hyperlink>
-      <Button fx:id="sendLogIn" layoutX="274.0" layoutY="265.0" mnemonicParsing="false" onAction="#validateLogin" text="Register">
+      <Button fx:id="gameBtn" layoutX="274.0" layoutY="265.0" mnemonicParsing="false" onAction="#validateRegister" text="Register">
          <font>
             <Font name="Castellar" size="12.0" />
          </font>

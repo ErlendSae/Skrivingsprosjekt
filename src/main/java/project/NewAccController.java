@@ -16,8 +16,10 @@ public class NewAccController extends StartpageController{
     @FXML
     private Hyperlink logInBtn2, gameLink;
     @FXML
-     public void validateLogin(){
+     public void validateRegister(ActionEvent event) throws IOException{
+        System.out.println("hei");
         inpText.setText("hey");
+        this.newWindow(event);
     }
 
      @FXML
