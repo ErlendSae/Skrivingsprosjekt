@@ -19,9 +19,11 @@ public class NewAccController extends StartpageController{
     //metode som sender deg til spillet etter en validering
     @FXML
      public void validateRegister(ActionEvent event) throws IOException{
-        this.validatePassword(inpPassword1);     
+        this.validatePassword(inpPassword1);
+        if (inpText.getLength() <= 1) throw new IllegalArgumentException("username must be at least two characters");     
         if (inpPassword1.getLength() != inpPassword2.getLength()) throw new IllegalArgumentException("passwords test");
         else if (!inpPassword1.getText().equals(inpPassword2.getText())) throw new IllegalArgumentException("passwords not equal");
+
         
         this.newWindow(event);
     }
