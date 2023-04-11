@@ -15,6 +15,7 @@ public class NewAccController extends StartpageController{
     private PasswordField inpPassword1, inpPassword2;
     @FXML
     private Hyperlink logInBtn2, gameLink;
+    private Highscores highscores = new Highscores();
 
     //metode som sender deg til spillet etter en validering
     @FXML
@@ -23,8 +24,12 @@ public class NewAccController extends StartpageController{
         if (inpText.getLength() <= 1) throw new IllegalArgumentException("username must be at least two characters");     
         if (inpPassword1.getLength() != inpPassword2.getLength()) throw new IllegalArgumentException("passwords test");
         else if (!inpPassword1.getText().equals(inpPassword2.getText())) throw new IllegalArgumentException("passwords not equal");
-
         
+        
+        this.highscores.restoreSavedUsers();
+        this.highscores.updateUsers(new User(inpText.getText(), inpPassword1.getText()));
+
+        System.out.println(this.highscores.getUsers());
         this.newWindow(event);
     }
 

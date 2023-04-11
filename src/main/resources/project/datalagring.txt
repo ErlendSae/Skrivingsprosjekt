@@ -1,0 +1,2 @@
+test passord1 100 0.87
+nytest passord2 200 0.90
