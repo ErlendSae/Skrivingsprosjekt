@@ -16,6 +16,8 @@
             <Font name="Castellar" size="12.0" />
          </font>
       </TextField>
+      <PasswordField fx:id="inpPassword1" layoutX="301.0" layoutY="165.0" promptText="●●●●●●" />
+      <PasswordField fx:id="inpPassword2" layoutX="300.0" layoutY="212.0" promptText="●●●●●●" />
       <Label layoutX="196.0" layoutY="122.0" prefHeight="18.0" prefWidth="79.0" text="Username:">
          <font>
             <Font name="Castellar" size="12.0" />
@@ -56,7 +58,5 @@
             <Font name="Castellar" size="11.0" />
          </font>
       </Hyperlink>
-      <PasswordField fx:id="inpPassword1" layoutX="301.0" layoutY="165.0" promptText="●●●●●●" />
-      <PasswordField fx:id="inpPassword2" layoutX="300.0" layoutY="212.0" promptText="●●●●●●" />
    </children>
 </AnchorPane>

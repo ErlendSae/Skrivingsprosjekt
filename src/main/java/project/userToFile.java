@@ -1,6 +1,7 @@
 package project;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,6 +12,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class userToFile {
+    //funciton to read lines
     public static List<String> readLines(String path, boolean resource) throws IOException {
         if (!resource) {
             return Files.readAllLines(Path.of(path));
@@ -26,9 +28,17 @@ public class userToFile {
             }
         }
     }
+    //Send a user to file
     public static void writeLines(String path, List<String> lines) throws IOException {
         Files.write(Path.of(path), lines, Charset.defaultCharset(), StandardOpenOption.CREATE,
                     StandardOpenOption.TRUNCATE_EXISTING);
-    }
-
+        // try {
+        //     FileWriter myWriter = new FileWriter(path);
+        //     myWriter.write(lines.get(0));
+        //     myWriter.close();
+        //   } catch (IOException e) {
+        //     System.out.println("An error occurred.");
+        //     e.printStackTrace();
+        //   }
+}
 }

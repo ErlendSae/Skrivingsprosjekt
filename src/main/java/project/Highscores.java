@@ -2,6 +2,7 @@ package project;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +13,18 @@ public class Highscores {
     
     private List<String> saved_users = new ArrayList<>();
 
-    public Map<User,Score> updateUsers(User newUser){
-        users.put(newUser, new Score());
+    public Map<User,Score> updateUsers(User newUser, Score score) throws IOException{
+        users.put(newUser, score);
+        this.restoreSavedUsers();
+        List<String> inputArray = new ArrayList<>();
+        for (String string : saved_users) {
+            inputArray.add(string);
+        }
+        String test = new String(newUser.toString() +  " " + score.toString());
+        inputArray.add(test);
+        System.out.println(saved_users);
+        userToFile.writeLines("src/main/resources/project/datalagring.txt", inputArray);
+
         return this.users;
     }
 
