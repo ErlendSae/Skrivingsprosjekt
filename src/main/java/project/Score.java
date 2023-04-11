@@ -1,26 +1,26 @@
 package project;
 
 public class Score {
-    private int score;
+    private float wpm;
     private float accuracy;
 
     public Score(){
-        this.score = 0;
+        this.wpm = 0;
         this.accuracy = 0;
     }
-    public Score(int score, float accuracy) {
-        this.score = score;
+    public Score(float wpm, float accuracy) {
+        this.wpm = wpm;
         this.accuracy = accuracy;
     }
     public float getScore() {
-        return score;
+        return wpm;
     }
     public float getAccuracy() {
         return accuracy;
     }
     @Override
     public String toString() {
-        return score + " " + accuracy;
+        return wpm + " " + accuracy;
     }   
      
 }

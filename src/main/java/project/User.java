@@ -19,6 +19,17 @@ public class User {
         this.pb = newPb;
         return this.pb;
     }
+    
+    public String getUsername() {
+        return username;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public Score getPb() {
+        return pb;
+    }
+    
     @Override
     public String toString() {
         return username + " " + password;

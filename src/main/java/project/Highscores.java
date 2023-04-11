@@ -2,7 +2,6 @@ package project;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,6 @@ public class Highscores {
         inputArray.add(test);
         System.out.println(saved_users);
         userToFile.writeLines("src/main/resources/project/datalagring.txt", inputArray);
-
         return this.users;
     }
 
@@ -34,8 +32,8 @@ public class Highscores {
     public Map<User,Score> restoreSavedUsers() throws IOException{
         saved_users = userToFile.readLines("/project/datalagring.txt", true);
         users = saved_users.stream() //streamer igjennom de ulike linjene fra tekstfilen
-        .map(e -> e.split(" ")) //splitter hvert linje basert på mellomrom
-        .collect(Collectors.toMap(e -> new User(e[0], e[1]),e -> new Score(Integer.parseInt(e[2]),Float.parseFloat(e[3]))));
+        .map(element -> element.split(" ")) //splitter hvert linje basert på mellomrom
+        .collect(Collectors.toMap(key -> new User(key[0], key[1]),value -> new Score(Float.parseFloat(value[2]),Float.parseFloat(value[3]))));
         //henter til slutt et map der det første elementet består av en user
         return users;
     }

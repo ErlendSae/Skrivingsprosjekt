@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,11 +15,11 @@ import javafx.stage.Stage;
 
 public class StartpageController {
     @FXML
-    private Text firstNumber, secondNumber, operator;
-    
-    @FXML
-    private Button logInBtn, gameBtn;
+    private Button logInBtn, gameBtn, sendLogIn;
 
+    @FXML
+    private Group scoreGroup;
+    
     @FXML
     private Hyperlink registerBtn, logInBtn2, gameLink;
     
@@ -40,10 +41,10 @@ public class StartpageController {
         else if (event.getSource().equals(gameLink)){ //registreringssidene har en hyperlink og ikke en btn som tar deg til spillet og er derfor separat fram gameBtn
             root = FXMLLoader.load(getClass().getResource("Game.fxml"));
         }
-
         else{
             root = FXMLLoader.load(getClass().getResource("Startpage.fxml"));
         }
+
         Stage stage = ((Stage) ((Node)event.getSource()).getScene().getWindow());
         Scene scene = new Scene(root);
         stage.setScene(scene);

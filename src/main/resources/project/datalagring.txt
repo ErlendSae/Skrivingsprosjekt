@@ -1,3 +1,1 @@
-Hei A1 0 0.0
-hei A1 0 0.0
-Noen A2 0 0.0
+Erlend Test123 0.0 0.0

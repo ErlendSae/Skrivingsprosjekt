@@ -1,7 +1,6 @@
 package project;
 
 import java.io.BufferedReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -27,7 +26,7 @@ public class userToFile {
                 return reader.lines().toList();
             }
         }
-    }
+    } 
     //Send a user to file
     public static void writeLines(String path, List<String> lines) throws IOException {
         Files.write(Path.of(path), lines, Charset.defaultCharset(), StandardOpenOption.CREATE,

@@ -18,6 +18,11 @@
       </TextField>
       <PasswordField fx:id="inpPassword1" layoutX="301.0" layoutY="165.0" promptText="●●●●●●" />
       <PasswordField fx:id="inpPassword2" layoutX="300.0" layoutY="212.0" promptText="●●●●●●" />
+      <Button fx:id="gameBtn" layoutX="274.0" layoutY="265.0" mnemonicParsing="false" onAction="#validateRegister" text="Register">
+         <font>
+            <Font name="Castellar" size="12.0" />
+         </font>
+      </Button>
       <Label layoutX="196.0" layoutY="122.0" prefHeight="18.0" prefWidth="79.0" text="Username:">
          <font>
             <Font name="Castellar" size="12.0" />
@@ -43,11 +48,6 @@
             <Font name="Castellar" size="11.0" />
          </font>
       </Hyperlink>
-      <Button fx:id="gameBtn" layoutX="274.0" layoutY="265.0" mnemonicParsing="false" onAction="#validateRegister" text="Register">
-         <font>
-            <Font name="Castellar" size="12.0" />
-         </font>
-      </Button>
       <Label layoutX="127.0" layoutY="216.0" prefHeight="18.0" prefWidth="148.0" text="confirm password:">
          <font>
             <Font name="Castellar" size="12.0" />
