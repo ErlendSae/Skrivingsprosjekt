@@ -22,7 +22,7 @@ public class Highscores {
         String test = new String(newUser.toString() +  " " + score.toString());
         inputArray.add(test);
         System.out.println(saved_users);
-        userToFile.writeLines("src/main/resources/project/datalagring.txt", inputArray);
+        UserToFile.writeLines("src/main/resources/project/datalagring.txt", inputArray);
         return this.users;
     }
 
@@ -30,7 +30,7 @@ public class Highscores {
         return users;
     }
     public Map<User,Score> restoreSavedUsers() throws IOException{
-        saved_users = userToFile.readLines("/project/datalagring.txt", true);
+        saved_users = UserToFile.readLines("/project/datalagring.txt", true);
         users = saved_users.stream() //streamer igjennom de ulike linjene fra tekstfilen
         .map(element -> element.split(" ")) //splitter hvert linje basert på mellomrom
         .collect(Collectors.toMap(key -> new User(key[0], key[1]),value -> new Score(Float.parseFloat(value[2]),Float.parseFloat(value[3]))));

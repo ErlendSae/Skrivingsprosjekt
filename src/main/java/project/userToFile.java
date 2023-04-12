@@ -10,14 +10,14 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
-public class userToFile {
+public class UserToFile {
     //funciton to read lines
     public static List<String> readLines(String path, boolean resource) throws IOException {
         if (!resource) {
             return Files.readAllLines(Path.of(path));
         }
 
-        try (InputStream resourceAsStream = userToFile.class.getResourceAsStream(path)) {
+        try (InputStream resourceAsStream = UserToFile.class.getResourceAsStream(path)) {
             if (resourceAsStream == null) {
                 throw new IOException("Resource not found");
             }

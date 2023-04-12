@@ -5,8 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.typingGameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragOver="#keyPressed" onKeyPressed="#keyPressed" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.TypingGameController">
    <children>
       <Line endX="499.0" endY="7.62939453125E-6" layoutX="101.0" layoutY="55.0" startX="-100.0" />
       <Text layoutX="258.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" wrappingWidth="85.2767333984375">
@@ -19,27 +18,27 @@
             <Font name="Castellar" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="439.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="guest" wrappingWidth="131.6767578125">
+      <Text fx:id="user" layoutX="439.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="guest" wrappingWidth="131.6767578125">
          <font>
             <Font name="Castellar" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="100.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="word1" wrappingWidth="102.07678222656205">
+      <Text fx:id="word1" layoutX="102.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="word1" wrappingWidth="131.6767578125">
          <font>
             <Font name="Castellar" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="400.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="word2" wrappingWidth="102.07678222656227">
+      <Text fx:id="word2" layoutX="402.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="word2" wrappingWidth="120.47674560546852">
          <font>
             <Font name="Castellar" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="98.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="word3" wrappingWidth="102.07678222656205">
+      <Text fx:id="word3" layoutX="100.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="word3" wrappingWidth="131.6767578125">
          <font>
             <Font name="Castellar" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="398.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="word4" wrappingWidth="102.07678222656227">
+      <Text fx:id="word4" layoutX="400.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="word4" wrappingWidth="142.87677001953125">
          <font>
             <Font name="Castellar" size="24.0" />
          </font>

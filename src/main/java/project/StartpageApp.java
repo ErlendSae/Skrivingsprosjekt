@@ -15,5 +15,6 @@ public class StartpageApp extends Application{
         primaryStage.setTitle("Main Page");
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Startpage.fxml"))));
         primaryStage.show();
+
     }
 }

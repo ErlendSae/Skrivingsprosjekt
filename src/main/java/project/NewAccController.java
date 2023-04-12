@@ -26,10 +26,8 @@ public class NewAccController extends StartpageController{
         else if (!inpPassword1.getText().equals(inpPassword2.getText())) throw new IllegalArgumentException("passwords not equal");
         
         
-        System.out.println(this.highscores.restoreSavedUsers());
         this.highscores.updateUsers(new User(inpText.getText(), inpPassword1.getText()), new Score());
 
-        System.out.println(this.highscores.getUsers());
         this.newWindow(event);
     }
 
