@@ -17,8 +17,8 @@ public class TypingGameController {
     private static TypingGame game = new TypingGame();
     
     @FXML
-    public void keyPressed(KeyEvent keyCode) {
-        System.out.println("hei");  
+    public static void keyPressed(KeyCode keyCode) throws IOException {
+        TypingGameController.game.keyPressed(keyCode);  
     }
     @FXML
     public void initialize() throws IOException{

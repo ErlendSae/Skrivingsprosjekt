@@ -15,7 +15,7 @@ public class WordsProvider {
         return all_words;
     }
 
-    public List<String> getFourWords() throws IOException{
+    public List<String> getFourWords() throws IOException{//metode som produserer 4 tilfeldige ord
         this.getWords();
         for (int index = 0; index < 4; index++) {
             fourWordsArr.add(all_words.get(random.nextInt(5758)));

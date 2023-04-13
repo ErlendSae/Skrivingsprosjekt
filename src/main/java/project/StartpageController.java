@@ -2,6 +2,7 @@ package project;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -10,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class StartpageController {
@@ -46,6 +48,17 @@ public class StartpageController {
 
         Stage stage = ((Stage) ((Node)event.getSource()).getScene().getWindow());
         Scene scene = new Scene(root);
+            scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
+                @Override
+                public void handle(KeyEvent event){
+                        try {
+                            TypingGameController.keyPressed(event.getCode());
+                        } catch (IOException e) {
+                            throw new IllegalAccessError("IOExeption");
+                        }
+                }
+            });
+
         stage.setScene(scene);
         stage.show();
     }
