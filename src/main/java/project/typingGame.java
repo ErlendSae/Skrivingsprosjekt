@@ -18,18 +18,37 @@ public class TypingGame {
             words.get(i).setText(wordsProvider.getFourWords().get(i));
         }
     }
-    public void keyPressed(KeyCode keycode) throws IOException{
+
+    //metode som registrerer tastetrykk, og sjekker om det er første gangen man begynner på et ord eller ikke
+    public void keyPressedInit(KeyCode keycode) throws IOException{
+
+            for (Text text : wordsArr) {
+                //først må jeg finne ut av om det er noen ord som er blå
+                if (text.getText().substring(0,1).toUpperCase().equals(keycode.toString()) && (text.getFill() == Color.BLUE)){
+                    if (text.getText().substring(0,1).equals(text.getText())){ //i tillfellet det skal hentes et nytt ord
+                        text.setFill(Color.BLACK);
+                    this.wordsArr.get(this.wordsArr.indexOf(text)).setText(wordsProvider.getFourWordsArr(this.wordsArr.indexOf(text)).get(this.wordsArr.indexOf(text)));
+                        return;
+                    }
+                            text.setText(text.getText().substring(1));
+                            return;
+                        }
+
+        }
+        if (wordsArr.stream()
+        .anyMatch(text -> (text.getFill() == Color.BLUE))){
+            return;
+        }
+        //dersom ingen ord er blå så vil alle ord være fem bokstaver, og programmet looper igjen for å finne eventuelle matches
         for (Text text : wordsArr) {
             if (text.getText().substring(0,1).toUpperCase().equals(keycode.toString())){
-                if (text.getText().substring(0,1).equals(text.getText())){
-                    text.setFill(Color.BLACK);
-                    text.setText(this.wordsProvider.getOneWord());
-                    return;
-                }
                 text.setText(text.getText().substring(1));
                 text.setFill(Color.BLUE);
                 return;
             }
         }
+    }
+    public List<Text> getWords(){
+        return this.wordsArr;
     }
 }
