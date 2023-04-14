@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 public class TypingGameController {
@@ -23,7 +21,6 @@ public class TypingGameController {
     @FXML
     public void initialize() throws IOException{
         this.getWords();
-
         game.initWords(words);
     }
     public List<Text> getWords(){

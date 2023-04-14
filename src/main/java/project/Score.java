@@ -22,5 +22,5 @@ public class Score {
     public String toString() {
         return wpm + " " + accuracy;
     }   
-     
+    
 }
