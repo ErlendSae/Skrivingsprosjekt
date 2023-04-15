@@ -16,15 +16,13 @@ import javafx.stage.Stage;
 
 public class StartpageController {
     @FXML
-    private Button logInBtn, guestBtn, gameBtn, sendLogIn;
+    private Button logInBtn, guestBtn, gameBtn, sendLogIn, wpmText;
 
     @FXML
     private Group scoreGroup;
     
     @FXML
     private Hyperlink registerBtn, logInBtn2, guestLink;
-
-    private TypingGame game = new TypingGame();
     
     @FXML
     protected void newWindow(ActionEvent event) throws IOException{  //sender deg til ulike sider basert på hvilken knapp man trykker på
@@ -39,14 +37,14 @@ public class StartpageController {
             root = FXMLLoader.load(getClass().getResource("CreateAcc.fxml"));
         }
         else if (event.getSource().equals(guestBtn)){//går til spillet
-            this.game.setUser(new User());
+            TypingGame.setUser(new User());
             root = FXMLLoader.load(getClass().getResource("Game.fxml"));
         }
         else if (event.getSource().equals(gameBtn)){//går til spillet
             root = FXMLLoader.load(getClass().getResource("Game.fxml"));
         }
         else if (event.getSource().equals(guestLink)){ //registreringssidene har en hyperlink og ikke en btn som tar deg til spillet og er derfor separat fram gameBtn
-            this.game.setUser(new User());
+            TypingGame.setUser(new User());
             root = FXMLLoader.load(getClass().getResource("Game.fxml"));
         }
         else{

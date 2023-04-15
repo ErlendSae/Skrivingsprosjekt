@@ -31,13 +31,5 @@ public class UserToFile {
     public static void writeLines(String path, List<String> lines) throws IOException {
         Files.write(Path.of(path), lines, Charset.defaultCharset(), StandardOpenOption.CREATE,
                     StandardOpenOption.TRUNCATE_EXISTING);
-        // try {
-        //     FileWriter myWriter = new FileWriter(path);
-        //     myWriter.write(lines.get(0));
-        //     myWriter.close();
-        //   } catch (IOException e) {
-        //     System.out.println("An error occurred.");
-        //     e.printStackTrace();
-        //   }
 }
 }

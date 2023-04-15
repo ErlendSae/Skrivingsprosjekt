@@ -14,7 +14,12 @@ public class Highscores {
 
     public Map<User,Score> updateUsers(User newUser, Score score) throws IOException{
         users.put(newUser, score);
-        this.restoreSavedUsers();
+        if (users.size() == 1){
+            this.restoreSavedUsers();
+        }
+        else{
+
+        }
         List<String> inputArray = new ArrayList<>();
         for (String string : saved_users) {
             inputArray.add(string);
@@ -24,7 +29,9 @@ public class Highscores {
         UserToFile.writeLines("src/main/resources/project/datalagring.txt", inputArray);
         return this.users;
     }
-
+    public Map<User,Score> newPb(){
+        return this.users;
+    }
     public Map<User, Score> getUsers() {
         return users;
     }

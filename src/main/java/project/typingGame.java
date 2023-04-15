@@ -13,19 +13,24 @@ import javafx.scene.text.Text;
 public class TypingGame {
     private WordsProvider wordsProvider = new WordsProvider();
     private List<Text> wordsArr = new ArrayList<>();
+    private int writtenWords = 0; //words written during the game
     private static Text countDown;
+    private static Text wpmText;
     private Text userText;
     private static User playingUser;
+    private int secondsPassed = 0;
+    private int missclicks = 0;
     
     public void setUserText(Text userText){
         this.userText = userText;
     }
+    public void setWpmText(Text wpmText){
+        TypingGame.wpmText = wpmText;
+    }
     public static void setUser(User playingUser) throws IOException{
-        System.out.println(playingUser.getUsername());
         TypingGame.playingUser = playingUser;
     }
     public void initWords(List<Text> words) throws IOException{
-        System.out.println(playingUser);
         this.wordsArr = words;
         for (int i = 0; i < 4; i++) {
             words.get(i).setText(wordsProvider.getFourWords().get(i));
@@ -35,12 +40,13 @@ public class TypingGame {
 
     //metode som registrerer tastetrykk, og sjekker om det er første gangen man begynner på et ord eller ikke
     public void keyPressedInit(KeyCode keycode) throws IOException{
-
             for (Text text : wordsArr) {
                 //først må jeg finne ut av om det er noen ord som er blå
                 if (text.getText().substring(0,1).toUpperCase().equals(keycode.toString()) && (text.getFill() == Color.BLUE)){
                     if (text.getText().substring(0,1).equals(text.getText())){ //i tillfellet det skal hentes et nytt ord
                         text.setFill(Color.BLACK);
+                        this.writtenWords += 1;
+                        this.calculateWPMandAccuracy(); //beregner hvor mye wpm skal ligge på
                         
                     this.wordsArr.get(this.wordsArr.indexOf(text)).setText(wordsProvider.getFourWordsArr(this.wordsArr.indexOf(text)).get(this.wordsArr.indexOf(text)));
                         return;
@@ -49,6 +55,7 @@ public class TypingGame {
                         return;
                         }
         }
+        this.missclicks += 1; // teller antall ganger man treffer feil (alle ganger man trykker feil knapp)
         if (wordsArr.stream()
         .anyMatch(text -> (text.getFill() == Color.BLUE))){
             return;
@@ -56,6 +63,7 @@ public class TypingGame {
         //dersom ingen ord er blå så vil alle ord være fem bokstaver, og programmet looper igjen for å finne eventuelle matches
         for (Text text : wordsArr) {
             if (text.getText().substring(0,1).toUpperCase().equals(keycode.toString())){
+                this.missclicks -= 1; //at alle ord er 5 bokstaver og svart farge skal ikke være et missclick
                 text.setText(text.getText().substring(1));
                 text.setFill(Color.BLUE);
                 return;
@@ -68,23 +76,28 @@ public class TypingGame {
     public void countDown(Text countDown){
     TypingGame.countDown = countDown;
     TimerTask task = new TimerTask() {
-        int i = 0;
         @Override
         public void run() {
-            i += 1;
-            if(i < 10){
-                TypingGame.countDown.setText("00:" + "0" + (60-i));
+            secondsPassed += 1;
+            if (secondsPassed % 10 == 0){
+                if (secondsPassed >= 60000){
+                    return;
+                }
+                else if(secondsPassed > 50000){
+                    TypingGame.countDown.setText((60000-secondsPassed+"").toString().substring(0,2)+ ":" + (60000-secondsPassed+"").toString().substring(2,4));
+                }
+                else{
+                    TypingGame.countDown.setText((60000-secondsPassed+"").toString().substring(0,2)+ ":" + (60000-secondsPassed+"").toString().substring(2,4));
+                }
             }
-            else if (i == 0){
-                
-                return;
-            }
-            TypingGame.countDown.setText("00:" + (60-i));
-                System.out.println(i); 
-          }
+              }
         }; 
       Timer timer = new Timer("Timer");
       
-      timer.schedule(task, 0,1000); //gjennomfører en nedtelling hvert sekund 
+      timer.schedule(task, 0,1); //gjennomfører en nedtelling hvert sekund 
+    }
+    public void calculateWPMandAccuracy(){
+        double wpm = (this.writtenWords/((double)this.secondsPassed/(double) 1000))*60;
+        TypingGame.wpmText.setText( (wpm+"").toString().substring(0, 5) + "WPM");
     }
 }

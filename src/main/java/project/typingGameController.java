@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 
 public class TypingGameController {
     @FXML
-    private Text word1, word2, word3, word4, user, timer;
+    private Text word1, word2, word3, word4, user, timer, wpmText;
     private static List<Text> words = new ArrayList<>();
     private static TypingGame game = new TypingGame();
     
@@ -24,6 +24,7 @@ public class TypingGameController {
         words.add(this.word2);
         words.add(this.word3);
         words.add(this.word4);
+        game.setWpmText(wpmText);
         game.setUserText(user);
         game.initWords(words);
         game.countDown(this.timer);
