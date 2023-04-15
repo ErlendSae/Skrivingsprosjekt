@@ -14,8 +14,8 @@ public class NewAccController extends StartpageController{
     @FXML
     private PasswordField inpPassword1, inpPassword2;
     @FXML
-    private Hyperlink logInBtn2, gameLink;
-    private Highscores highscores = new Highscores();
+    private Hyperlink logInBtn2, guestLink;
+    private Highscores highscores = new Highscores();   
 
     //metode som sender deg til spillet etter en validering
     @FXML
@@ -28,7 +28,7 @@ public class NewAccController extends StartpageController{
         
         this.highscores.updateUsers(new User(inpText.getText(), inpPassword1.getText()), new Score());
 
-        this.newWindow(event);
+        this.enterWindow(event);
     }
 
     //metode som validerer passordet
@@ -47,6 +47,7 @@ public class NewAccController extends StartpageController{
 
      @FXML
      public void enterWindow(ActionEvent event) throws IOException{
+        TypingGame.setUser(new User(inpText.getText(), inpPassword1.getText()));
          this.newWindow(event);
      }
 }

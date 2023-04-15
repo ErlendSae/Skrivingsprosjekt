@@ -11,9 +11,11 @@ public class LoginController extends StartpageController{
    @FXML
    private TextField inpText, inpPassword;
    @FXML
-   private Hyperlink registerBtn, gameLink;
+   private Hyperlink registerBtn, guestLink;
 
    private Highscores highscores = new Highscores();
+
+   private User inpUser = new User();
 
     @FXML
     public void validateLogin(ActionEvent event) throws IOException{
@@ -21,6 +23,7 @@ public class LoginController extends StartpageController{
         boolean nameIncluded = false;
         for (User user : this.highscores.getUsers().keySet()) {
             if (this.inpText.getText().equals(user.getUsername())){
+                this.inpUser = user;
                 nameIncluded = true;
                 if (!this.inpPassword.getText().equals(user.getPassword())){
                     throw new IllegalArgumentException("password is incorrect");
@@ -32,6 +35,7 @@ public class LoginController extends StartpageController{
     }
     @FXML
     public void enterWindow(ActionEvent event) throws IOException{
+        TypingGame.setUser(new User(inpText.getText(), inpPassword.getText(), this.inpUser.getPb()));
         this.newWindow(event);
     }
 

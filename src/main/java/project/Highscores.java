@@ -21,7 +21,6 @@ public class Highscores {
         }
         String test = new String(newUser.toString() +  " " + score.toString());
         inputArray.add(test);
-        System.out.println(saved_users);
         UserToFile.writeLines("src/main/resources/project/datalagring.txt", inputArray);
         return this.users;
     }

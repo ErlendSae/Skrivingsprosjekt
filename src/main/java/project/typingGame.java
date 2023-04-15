@@ -2,7 +2,6 @@ package project;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -15,11 +14,22 @@ public class TypingGame {
     private WordsProvider wordsProvider = new WordsProvider();
     private List<Text> wordsArr = new ArrayList<>();
     private static Text countDown;
+    private Text userText;
+    private static User playingUser;
     
+    public void setUserText(Text userText){
+        this.userText = userText;
+    }
+    public static void setUser(User playingUser) throws IOException{
+        System.out.println(playingUser.getUsername());
+        TypingGame.playingUser = playingUser;
+    }
     public void initWords(List<Text> words) throws IOException{
+        System.out.println(playingUser);
         this.wordsArr = words;
         for (int i = 0; i < 4; i++) {
             words.get(i).setText(wordsProvider.getFourWords().get(i));
+            this.userText.setText(playingUser.getUsername());
         }
     }
 
@@ -31,6 +41,7 @@ public class TypingGame {
                 if (text.getText().substring(0,1).toUpperCase().equals(keycode.toString()) && (text.getFill() == Color.BLUE)){
                     if (text.getText().substring(0,1).equals(text.getText())){ //i tillfellet det skal hentes et nytt ord
                         text.setFill(Color.BLACK);
+                        
                     this.wordsArr.get(this.wordsArr.indexOf(text)).setText(wordsProvider.getFourWordsArr(this.wordsArr.indexOf(text)).get(this.wordsArr.indexOf(text)));
                         return;
                     }

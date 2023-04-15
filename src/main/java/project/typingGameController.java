@@ -24,10 +24,14 @@ public class TypingGameController {
         words.add(this.word2);
         words.add(this.word3);
         words.add(this.word4);
+        game.setUserText(user);
         game.initWords(words);
         game.countDown(this.timer);
     }
     public static List<Text> getWords(){
         return words;
+    }
+    public Text getUser(){
+        return this.user;
     }
 }
