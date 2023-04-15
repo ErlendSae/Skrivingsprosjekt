@@ -40,7 +40,6 @@ public class WordsProvider {
     public String getOneWord(int index) throws IOException{
         this.getWords();
         this.fourWordsArr.remove(index);
-        System.out.println(fourWordsArr);
         this.fourWordsArr.add(all_words.get(random.nextInt(5751)));
         boolean same_first_letter = false;
         for (int i = 0; i < fourWordsArr.size()-1; i++) {
@@ -57,7 +56,6 @@ public class WordsProvider {
         this.fourWordsArr.set(index,this.fourWordsArr.get(this.fourWordsArr.size()-1));
         this.fourWordsArr.remove(this.fourWordsArr.size()-1);
         this.fourWordsArr.remove(this.fourWordsArr.size()-1);
-        System.out.println(this.fourWordsArr);
         return fourWordsArr.get(fourWordsArr.size()-1); 
         // if (TypingGameController.getWords().stream().anyMatch(w -> newWord.substring(0,1).equals(w.getText().substring(0,1)))){
         //     newWord = all_words.get(random.nextInt(5758));
