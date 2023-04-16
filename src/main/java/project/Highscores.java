@@ -14,28 +14,34 @@ public class Highscores {
 
     public static Map<User,Score> updateUsers(User newUser, Score score) throws IOException{
         Highscores.restoreSavedUsers();
+        boolean match = false;
+        boolean forste = true;
         List<String> inputArray = new ArrayList<>();
         for (String string : saved_users) {
             inputArray.add(string);
         }
         for (User user : users.keySet()) {
-            System.out.println(user);
             if (user.getUsername().equals(newUser.getUsername())){
-                if (((int) user.getPb().getScore()) < (int) score.getScore()){
+                match = true;
+                if (((int) user.getPb().getScore()) < (int) score.getScore() && forste){
+                    forste = false;
                     users.remove(user);
                     users.put(newUser, score);
                     newUser.updatePb(score);
                     for (String string : inputArray) {
-                        inputArray.set(inputArray.indexOf(string), newUser.toString() +  " " + score.toString());
+                        if (string.split(" ")[0].equals(newUser.getUsername())){
+                            inputArray.set(inputArray.indexOf(string), newUser.toString() +  " " + score.toString());
+                        }
                     }
+
                 }
 
             }
-            else{
-                users.put(newUser, score);
-                String newLine = new String(newUser.toString() +  " " + score.toString());
-                inputArray.add(newLine);
-                }
+        }
+        if (!match){
+            users.put(newUser, score);
+            String newLine = new String(newUser.toString() +  " " + score.toString());
+            inputArray.add(newLine);
         }
         UserToFile.writeLines("src/main/resources/project/datalagring.txt", inputArray);
         return users;

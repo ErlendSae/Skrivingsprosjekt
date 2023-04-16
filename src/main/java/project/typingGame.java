@@ -84,7 +84,8 @@ public class TypingGame {
                     try {
                         TypingGame.updateUsers();
                     } catch (IOException e) {
-                        e.printStackTrace();
+                    cancel();
+                    e.printStackTrace();
                     }
                     cancel();
                     return;

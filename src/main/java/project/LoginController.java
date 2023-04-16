@@ -19,7 +19,7 @@ public class LoginController extends StartpageController{
 
     @FXML
     public void validateLogin(ActionEvent event) throws IOException{
-        highscores.restoreSavedUsers();
+        Highscores.restoreSavedUsers();
         boolean nameIncluded = false;
         for (User user : this.highscores.getUsers().keySet()) {
             if (this.inpText.getText().equals(user.getUsername())){
