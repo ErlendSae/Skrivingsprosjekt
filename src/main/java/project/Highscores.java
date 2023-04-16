@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Highscores {
+public class Highscores{
     private static Map<User,Score> users = new HashMap<>();
     
     private static List<String> saved_users = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Highscores {
     public Map<User,Score> newPb(){
         return users;
     }
-    public Map<User, Score> getUsers() {
+    public static Map<User, Score> getUsers() {
         return users;
     }
     public static Map<User,Score> restoreSavedUsers() throws IOException{
@@ -60,5 +60,7 @@ public class Highscores {
         //henter til slutt et map der det første elementet består av en user
         return users;
     }
+    public void sortUsers(Map<User,Score> unsortedList){
 
+    }
 }

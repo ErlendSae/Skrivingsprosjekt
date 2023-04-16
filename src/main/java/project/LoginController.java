@@ -13,15 +13,13 @@ public class LoginController extends StartpageController{
    @FXML
    private Hyperlink registerBtn, guestLink;
 
-   private Highscores highscores = new Highscores();
-
    private User inpUser = new User();
 
     @FXML
     public void validateLogin(ActionEvent event) throws IOException{
         Highscores.restoreSavedUsers();
         boolean nameIncluded = false;
-        for (User user : this.highscores.getUsers().keySet()) {
+        for (User user : Highscores.getUsers().keySet()) {
             if (this.inpText.getText().equals(user.getUsername())){
                 this.inpUser = user;
                 nameIncluded = true;

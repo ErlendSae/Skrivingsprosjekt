@@ -10,17 +10,17 @@
    <children>
       <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="82.0" prefWidth="647.0" style="-fx-background-color: #e9e9e9;">
          <children>
-            <Text fx:id="timer" layoutX="279.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" wrappingWidth="85.2767333984375">
+            <Text fx:id="timer" layoutX="281.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" wrappingWidth="85.2767333984375">
                <font>
                   <Font name="Castellar" size="24.0" />
                </font>
             </Text>
-            <Text fx:id="wpmText" layoutX="45.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00.00wpm" wrappingWidth="154.0767822265625">
+            <Text fx:id="wpmText" layoutX="69.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00.00wpm" wrappingWidth="154.0767822265625">
                <font>
                   <Font name="Castellar" size="24.0" />
                </font>
             </Text>
-            <Text fx:id="user" layoutX="483.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="guest" wrappingWidth="142.87677001953125">
+            <Text fx:id="user" layoutX="446.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="guest" wrappingWidth="186.07672119140625">
                <font>
                   <Font name="Castellar" size="24.0" />
                </font>

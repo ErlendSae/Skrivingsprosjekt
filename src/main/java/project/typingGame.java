@@ -20,6 +20,7 @@ public class TypingGame {
     private static User playingUser;
     private static int secondsPassed = 0;
     private static int missclicks = 0;
+    private Highscores highscores = new Highscores();
     
     public void setUserText(Text userText){
         this.userText = userText;
@@ -83,6 +84,7 @@ public class TypingGame {
                 if (secondsPassed >= 60000){
                     try {
                         TypingGame.updateUsers();
+                        highscores.sortUsers(Highscores.getUsers());
                     } catch (IOException e) {
                     cancel();
                     e.printStackTrace();
@@ -111,6 +113,6 @@ public class TypingGame {
         TypingGame.wpmText.setText( (wpm+"").toString().substring(0, 5) + "WPM");
     }
     public static void updateUsers() throws IOException{
-        Highscores.updateUsers(playingUser, new Score((writtenWords/((float)secondsPassed/(float) 1000))*60, 100-(missclicks/((float) writtenWords*5))));
+        Highscores.updateUsers(playingUser, new Score((writtenWords/((float)secondsPassed/(float) 1000))*60, 100*(missclicks/((float) writtenWords*5))));
     }
 }

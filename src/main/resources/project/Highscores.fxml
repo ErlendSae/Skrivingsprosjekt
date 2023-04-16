@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.HighscoresController">
+   <children>
+      <Text layoutX="219.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscores" wrappingWidth="222.39990234375">
+         <font>
+            <Font name="Castellar" size="30.0" />
+         </font>
+      </Text>
+      <Group fx:id="scoreGroup1" layoutX="159.0" layoutY="96.0">
+         <children>
+            <Separator layoutX="14.0" prefHeight="23.0" prefWidth="315.0">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Separator>
+            <Text layoutX="14.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="47.7366943359375">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="131.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0WPM" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="262.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0ACC" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group fx:id="scoreGroup2" layoutX="159.0" layoutY="136.0">
+         <children>
+            <Separator layoutX="14.0" prefHeight="23.0" prefWidth="315.0">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Separator>
+            <Text layoutX="14.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="47.7366943359375">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="131.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0WPM" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="262.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0ACC" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group fx:id="scoreGroup3" layoutX="159.0" layoutY="176.0">
+         <children>
+            <Separator layoutX="14.0" prefHeight="23.0" prefWidth="315.0">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Separator>
+            <Text layoutX="14.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="47.7366943359375">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="131.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0WPM" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="262.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0ACC" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group fx:id="scoreGroup4" layoutX="159.0" layoutY="216.0">
+         <children>
+            <Separator layoutX="14.0" prefHeight="23.0" prefWidth="315.0">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Separator>
+            <Text layoutX="14.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="47.7366943359375">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="131.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0WPM" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="262.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0ACC" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group fx:id="scoreGroup5" layoutX="159.0" layoutY="256.0">
+         <children>
+            <Separator layoutX="14.0" prefHeight="23.0" prefWidth="315.0">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Separator>
+            <Text layoutX="14.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="47.7366943359375">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="131.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0WPM" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="262.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0ACC" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group fx:id="scoreGroup6" layoutX="159.0" layoutY="296.0">
+         <children>
+            <Separator layoutX="14.0" prefHeight="23.0" prefWidth="315.0">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Separator>
+            <Text layoutX="14.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="47.7366943359375">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="131.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0WPM" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="262.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0ACC" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group fx:id="scoreGroup7" layoutX="159.0" layoutY="336.0">
+         <children>
+            <Separator layoutX="14.0" prefHeight="23.0" prefWidth="315.0">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Separator>
+            <Text layoutX="14.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="47.7366943359375">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="131.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0WPM" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="262.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0ACC" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group fx:id="scoreGroup8" layoutX="159.0" layoutY="376.0">
+         <children>
+            <Separator layoutX="14.0" prefHeight="23.0" prefWidth="315.0">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Separator>
+            <Text layoutX="14.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="47.7366943359375">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="131.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0WPM" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="262.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0ACC" wrappingWidth="66.13671875">
+               <font>
+                  <Font name="Castellar" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Label layoutX="122.0" layoutY="96.0" prefHeight="23.0" prefWidth="34.0" text="1.st" textFill="#b79800">
+         <font>
+            <Font name="Castellar" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="136.0" prefHeight="23.0" prefWidth="34.0" text="2.nd" textFill="SILVER">
+         <font>
+            <Font name="Castellar" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="176.0" prefHeight="23.0" prefWidth="34.0" text="3.rd" textFill="#cd7f32">
+         <font>
+            <Font name="Castellar" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="216.0" prefHeight="23.0" prefWidth="34.0" text="4.th">
+         <font>
+            <Font name="Castellar" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="256.0" prefHeight="23.0" prefWidth="34.0" text="5.th">
+         <font>
+            <Font name="Castellar" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="296.0" prefHeight="23.0" prefWidth="34.0" text="6.th">
+         <font>
+            <Font name="Castellar" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="336.0" prefHeight="23.0" prefWidth="34.0" text="7.th">
+         <font>
+            <Font name="Castellar" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="376.0" prefHeight="23.0" prefWidth="34.0" text="8.th">
+         <font>
+            <Font name="Castellar" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

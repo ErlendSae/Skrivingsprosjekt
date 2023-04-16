@@ -1,5 +1,7 @@
 package project;
 
+import java.util.Random;
+
 import javafx.fxml.FXML;
 
 public class User {
@@ -9,10 +11,11 @@ public class User {
     private String password;
 
     private Score pb;   //personlig beste score til denne useren
+    private Random random = new Random();
 
     //constructor for guest-brukere
     public User(){
-        this.username = "guest";
+        this.username = "guest"+ random.nextInt(10000);
         this.password = null;
         this.pb = new Score(0, 0);
     }
