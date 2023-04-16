@@ -1,6 +1,6 @@
 package project;
 
-public class Score {
+public class Score implements Comparable<Score>{
     private float wpm;
     private float accuracy;
 
@@ -21,6 +21,16 @@ public class Score {
     @Override
     public String toString() {
         return wpm + " " + accuracy;
+    }
+    @Override
+    public int compareTo(Score arg0) {
+        if (this.getScore() > arg0.getScore()){
+            return 1;
+        }
+        else if (this.getScore() < arg0.getScore()){
+            return -1;
+        }
+        return 0;
     }   
     
 }

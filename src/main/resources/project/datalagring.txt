@@ -1,2 +1,6 @@
 Erlend Test123 5.0 99.88
-guest8530 null 44.0 99.91818
+guest7727 null 54.0 7.4074073
+guest8608 null 12.0 6.666667
+guest6819 null 2.0 20.0
+guest5746 null 0.0 Infinity
+guest6907 null 0.0 NaN

@@ -50,7 +50,6 @@ public class StartpageController {
         else{
             root = FXMLLoader.load(getClass().getResource("Startpage.fxml"));
         }
-
         Stage stage = ((Stage) ((Node)event.getSource()).getScene().getWindow());
         Scene scene = new Scene(root);
             scene.setOnKeyPressed(new EventHandler<KeyEvent>(){

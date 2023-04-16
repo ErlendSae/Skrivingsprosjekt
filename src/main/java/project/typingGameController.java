@@ -5,8 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class TypingGameController {
     @FXML
@@ -20,6 +25,7 @@ public class TypingGameController {
     }
     @FXML
     public void initialize() throws IOException{
+        System.out.println(this.word1.getScene());
         words.add(this.word1);
         words.add(this.word2);
         words.add(this.word3);
@@ -34,5 +40,15 @@ public class TypingGameController {
     }
     public Text getUser(){
         return this.user;
+    }
+    public void highscoreScene() throws IOException{
+        System.out.println("hei");
+        Parent root = FXMLLoader.load(getClass().getResource("Highscores.fxml"));
+        System.out.println(root);
+        Stage stage = ((Stage) (word1).getScene().getWindow());
+        System.out.println(stage);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

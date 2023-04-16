@@ -11,6 +11,8 @@ public class Highscores{
     private static Map<User,Score> users = new HashMap<>();
     
     private static List<String> saved_users = new ArrayList<>();
+    private List<User> sorted_users = new ArrayList<>();
+    private TypingGameController controller = new TypingGameController();
 
     public static Map<User,Score> updateUsers(User newUser, Score score) throws IOException{
         Highscores.restoreSavedUsers();
@@ -60,7 +62,26 @@ public class Highscores{
         //henter til slutt et map der det første elementet består av en user
         return users;
     }
-    public void sortUsers(Map<User,Score> unsortedList){
-
+    public List<User> sortUsers(Map<User,Score> unsortedMap, List<User> sortedUsers) throws IOException{
+        for (User user : unsortedMap.keySet()) {
+            boolean biggest = true;
+            for (User user2 : unsortedMap.keySet()) {
+                if (unsortedMap.get(user).compareTo(unsortedMap.get(user2)) == -1){
+                    biggest = false;
+                }
+            }
+            if (biggest){
+                sortedUsers.add(user);
+                unsortedMap.remove(user);
+                if (unsortedMap.size() == 0) {
+                    this.sorted_users = sortedUsers;
+                    controller.highscoreScene();
+                    return sortedUsers;
+                }
+                this.sortUsers(unsortedMap, sortedUsers);
+            }
+        }
+        return sortedUsers;
     }
+
 }

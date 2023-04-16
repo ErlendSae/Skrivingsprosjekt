@@ -84,7 +84,7 @@ public class TypingGame {
                 if (secondsPassed >= 60000){
                     try {
                         TypingGame.updateUsers();
-                        highscores.sortUsers(Highscores.getUsers());
+                        highscores.sortUsers(Highscores.getUsers(), new ArrayList<>());
                     } catch (IOException e) {
                     cancel();
                     e.printStackTrace();
