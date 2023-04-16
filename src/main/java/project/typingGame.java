@@ -13,13 +13,13 @@ import javafx.scene.text.Text;
 public class TypingGame {
     private WordsProvider wordsProvider = new WordsProvider();
     private List<Text> wordsArr = new ArrayList<>();
-    private int writtenWords = 0; //words written during the game
+    private static int writtenWords = 0; //words written during the game
     private static Text countDown;
     private static Text wpmText;
     private Text userText;
     private static User playingUser;
-    private int secondsPassed = 0;
-    private int missclicks = 0;
+    private static int secondsPassed = 0;
+    private static int missclicks = 0;
     
     public void setUserText(Text userText){
         this.userText = userText;
@@ -45,7 +45,7 @@ public class TypingGame {
                 if (text.getText().substring(0,1).toUpperCase().equals(keycode.toString()) && (text.getFill() == Color.BLUE)){
                     if (text.getText().substring(0,1).equals(text.getText())){ //i tillfellet det skal hentes et nytt ord
                         text.setFill(Color.BLACK);
-                        this.writtenWords += 1;
+                        writtenWords += 1;
                         this.calculateWPMandAccuracy(); //beregner hvor mye wpm skal ligge på
                         
                     this.wordsArr.get(this.wordsArr.indexOf(text)).setText(wordsProvider.getFourWordsArr(this.wordsArr.indexOf(text)).get(this.wordsArr.indexOf(text)));
@@ -55,7 +55,7 @@ public class TypingGame {
                         return;
                         }
         }
-        this.missclicks += 1; // teller antall ganger man treffer feil (alle ganger man trykker feil knapp)
+        missclicks += 1; // teller antall ganger man treffer feil (alle ganger man trykker feil knapp)
         if (wordsArr.stream()
         .anyMatch(text -> (text.getFill() == Color.BLUE))){
             return;
@@ -63,7 +63,7 @@ public class TypingGame {
         //dersom ingen ord er blå så vil alle ord være fem bokstaver, og programmet looper igjen for å finne eventuelle matches
         for (Text text : wordsArr) {
             if (text.getText().substring(0,1).toUpperCase().equals(keycode.toString())){
-                this.missclicks -= 1; //at alle ord er 5 bokstaver og svart farge skal ikke være et missclick
+                missclicks -= 1; //at alle ord er 5 bokstaver og svart farge skal ikke være et missclick
                 text.setText(text.getText().substring(1));
                 text.setFill(Color.BLUE);
                 return;
@@ -81,10 +81,19 @@ public class TypingGame {
             secondsPassed += 1;
             if (secondsPassed % 10 == 0){
                 if (secondsPassed >= 60000){
+                    try {
+                        TypingGame.updateUsers();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    cancel();
                     return;
                 }
+                else if(secondsPassed > 59000){
+                    TypingGame.countDown.setText("00:" + (60000-secondsPassed+"").toString().substring(1,2) + "0");
+                }
                 else if(secondsPassed > 50000){
-                    TypingGame.countDown.setText((60000-secondsPassed+"").toString().substring(0,2)+ ":" + (60000-secondsPassed+"").toString().substring(2,4));
+                    TypingGame.countDown.setText("0" + (60000-secondsPassed+"").toString().substring(0,1)+ ":" + (60000-secondsPassed+"").toString().substring(1,3));
                 }
                 else{
                     TypingGame.countDown.setText((60000-secondsPassed+"").toString().substring(0,2)+ ":" + (60000-secondsPassed+"").toString().substring(2,4));
@@ -97,7 +106,10 @@ public class TypingGame {
       timer.schedule(task, 0,1); //gjennomfører en nedtelling hvert sekund 
     }
     public void calculateWPMandAccuracy(){
-        double wpm = (this.writtenWords/((double)this.secondsPassed/(double) 1000))*60;
+        float wpm = (writtenWords/((float)secondsPassed/(float) 1000))*60;
         TypingGame.wpmText.setText( (wpm+"").toString().substring(0, 5) + "WPM");
+    }
+    public static void updateUsers() throws IOException{
+        Highscores.updateUsers(playingUser, new Score((writtenWords/((float)secondsPassed/(float) 1000))*60, 100-(missclicks/((float) writtenWords*5))));
     }
 }
