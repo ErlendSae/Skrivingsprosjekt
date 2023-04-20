@@ -49,7 +49,7 @@ public class WordsProvider {
         }
         if (same_first_letter){
             fourWordsArr.remove(fourWordsArr.size()-1);
-            this.getFourWords(); //bruker rekusjon hver gang to forbokstaver er like helt til alle ordene har forskjellig forbokstav 
+            this.getFourWords(); //bruker rekursjon hver gang to forbokstaver er like helt til alle ordene har forskjellig forbokstav 
         }
         this.fourWordsArr.add(index, this.fourWordsArr.get(this.fourWordsArr.size()-1));
         this.fourWordsArr.add(this.fourWordsArr.get(index));

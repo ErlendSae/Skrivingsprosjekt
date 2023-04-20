@@ -1,4 +1,4 @@
-Erlend Test123 5.0 38.94737
+Erlend NyttPassord1 50.0 90.0
 guest8391 null 6.0 100.0
 guest1391 null 0.0 0.0
 guest9845 null 0.0 0.0

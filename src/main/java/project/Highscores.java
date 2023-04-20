@@ -17,6 +17,7 @@ public class Highscores{
     private static List<String> saved_users = new ArrayList<>();
     private static List<Group> highscoresArr = new ArrayList<>();
     private List<User> sorted_users = new ArrayList<>();
+    private String path = "src/main/resources/project/datalagring.txt";
     
     public Map<User,Score> updateUsers(User newUser, Score score) throws IOException{
         this.restoreSavedUsers();
@@ -57,7 +58,7 @@ public class Highscores{
             String newLine = new String(newUser.toString() +  " " + score.toString());
             inputArray.add(newLine);
         }
-        UserToFile.writeLines("src/main/resources/project/datalagring.txt", inputArray);
+        UserToFile.writeLines(path, inputArray);
         return users;
     }
 
@@ -67,6 +68,10 @@ public class Highscores{
     }
     public Map<User, Score> getUsers() {
         return users;
+    }
+    public String setPath(String newPath, boolean resource){
+        this.path = newPath;
+        return this.path;
     }
     public Map<User,Score> restoreSavedUsers() throws IOException{
         saved_users = UserToFile.readLines("/project/datalagring.txt", true);

@@ -13,7 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class ProsjektTest {
     
@@ -22,21 +22,22 @@ public class ProsjektTest {
     private TypingGame game;
     private Highscores highscores;
     private NewAccController register;
-
+    private Login login;
     @BeforeEach
     public void setUp() {
         pb = new Score();
-        user = new User("Erlend", "Kul1", pb);
+        user = new User("Erlend", "NyttPassord1", pb);
         game = new TypingGame();
         highscores = new Highscores();
         register = new NewAccController();
+        login = new Login();
     }
 
     @Test
     @DisplayName("tester konstruktøren til user")
     public void testConstructorUser(){
         Assertions.assertEquals("Erlend", user.getUsername());
-        Assertions.assertEquals("Kul1", user.getPassword());
+        Assertions.assertEquals("NyttPassord1", user.getPassword());
         Assertions.assertEquals(pb, user.getPb());
     }
     @Test
@@ -49,13 +50,9 @@ public class ProsjektTest {
     @Test
     @DisplayName("compareto")
     public void testPasswordValidator(){
-        PasswordField passwordField = new PasswordField();
-        passwordField.setText("hei123");
-        Assertions.assertThrows(IllegalArgumentException.class, () -> register.validatePassword(passwordField), "password must contain at least one capital letter");
+        Assertions.assertThrows(IllegalArgumentException.class, () -> login.validateLogin(new TextField("hei"), new TextField("Test123")), "No user with this name");
 
     }
-
-
     
     @Test
     @DisplayName("wordsperminute")
@@ -66,28 +63,6 @@ public class ProsjektTest {
         int secondsPassed = game.getSecondsPassed();
         game.calculateWPMandAccuracy();
         Assertions.assertEquals("60WPM",game.getWpmText().getText());
-    }
-
-
-    @Test
-    @DisplayName("sorted users")
-    public void testSortedUsers(){
-        Map<User,Score> unsortedMap = new HashMap<>();
-        User user1 = new User("user1", null);
-        User user2 = new User("user2", null);
-        User user3 = new User("user3", null);
-        unsortedMap.put(user, new Score(20, 39));
-        unsortedMap.put(user1, new Score(30, 39));
-        unsortedMap.put(user2, new Score(40, 39));
-        unsortedMap.put(user3, new Score(50, 39));
-        List<User> solList = new ArrayList();
-        solList.add(user3);
-        solList.add(user2);
-        solList.add(user1);
-        solList.add(user);
-        
-        highscores.sortUsers(unsortedMap,new ArrayList<>());
-        Assertions.assertEquals(solList,highscores.sortUsers(unsortedMap,new ArrayList<>()));
     }
 
     @Test
@@ -106,6 +81,18 @@ public class ProsjektTest {
         Assertions.assertEquals(true, highscores.getUsers().keySet().stream().anyMatch(u -> u.getUsername().equals("Erlend")));
         Assertions.assertEquals(true, highscores.getUsers().keySet().stream().anyMatch(u -> u.getPassword().equals("Test123")));
         Assertions.assertEquals(true, highscores.getUsers().values().stream().anyMatch(u -> u.getScore() == (Float.parseFloat("5.0"))));
+    }
+
+    @Test
+    @DisplayName("tester filhåndtering2 og sortering")
+    public void testFil2() throws IOException{
+        pb = new Score(50, 90);
+        highscores.setPath("src/test/java/project/datalagringTest.txt", false);
+        highscores.restoreSavedUsers();
+        highscores.updateUsers(user, pb);
+        Assertions.assertEquals(true, highscores.getUsers().keySet().stream().anyMatch(u -> u.getUsername().equals("Erlend")));
+
+        Assertions.assertEquals("guest748", highscores.sortUsers(highscores.getUsers(), new ArrayList<>()).get(2).getUsername(), "tester om den med nest mest poeng dukker opp på andreplass");
     }
 
 
