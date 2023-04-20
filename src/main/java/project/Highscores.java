@@ -7,25 +7,39 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javafx.scene.Group;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+
 public class Highscores{
     private static Map<User,Score> users = new HashMap<>();
     
     private static List<String> saved_users = new ArrayList<>();
+    private static List<Group> highscoresArr = new ArrayList<>();
     private List<User> sorted_users = new ArrayList<>();
-    private TypingGameController controller = new TypingGameController();
+    
+    public Map<User,Score> updateUsers(User newUser, Score score) throws IOException{
+        this.restoreSavedUsers();
 
-    public static Map<User,Score> updateUsers(User newUser, Score score) throws IOException{
-        Highscores.restoreSavedUsers();
         boolean match = false;
         boolean forste = true;
         List<String> inputArray = new ArrayList<>();
         for (String string : saved_users) {
             inputArray.add(string);
         }
+        List<User> usersArr = new ArrayList<>();
         for (User user : users.keySet()) {
+            usersArr.add(user);
+        }
+
+        //sjekke om navnet allerede finnes i filen
+        for (User user : usersArr) {
             if (user.getUsername().equals(newUser.getUsername())){
+                System.out.println(user);
+                System.out.println(newUser);
                 match = true;
                 if (((int) user.getPb().getScore()) < (int) score.getScore() && forste){
+                    System.out.println("hei2");
                     forste = false;
                     users.remove(user);
                     users.put(newUser, score);
@@ -35,9 +49,7 @@ public class Highscores{
                             inputArray.set(inputArray.indexOf(string), newUser.toString() +  " " + score.toString());
                         }
                     }
-
                 }
-
             }
         }
         if (!match){
@@ -48,13 +60,15 @@ public class Highscores{
         UserToFile.writeLines("src/main/resources/project/datalagring.txt", inputArray);
         return users;
     }
+
+
     public Map<User,Score> newPb(){
         return users;
     }
-    public static Map<User, Score> getUsers() {
+    public Map<User, Score> getUsers() {
         return users;
     }
-    public static Map<User,Score> restoreSavedUsers() throws IOException{
+    public Map<User,Score> restoreSavedUsers() throws IOException{
         saved_users = UserToFile.readLines("/project/datalagring.txt", true);
         users = saved_users.stream() //streamer igjennom de ulike linjene fra tekstfilen
         .map(element -> element.split(" ")) //splitter hvert linje basert på mellomrom
@@ -62,26 +76,76 @@ public class Highscores{
         //henter til slutt et map der det første elementet består av en user
         return users;
     }
-    public List<User> sortUsers(Map<User,Score> unsortedMap, List<User> sortedUsers) throws IOException{
-        for (User user : unsortedMap.keySet()) {
+
+    public List<User> sortUsers(Map<User,Score> unsortedMap, List<User> sortedUsers){
+        Map<User,Score> unsortedMapClone = new HashMap<>();
+        unsortedMapClone = unsortedMap;
+        for (User user : unsortedMapClone.keySet()) {
             boolean biggest = true;
-            for (User user2 : unsortedMap.keySet()) {
-                if (unsortedMap.get(user).compareTo(unsortedMap.get(user2)) == -1){
+            for (User user2 : unsortedMapClone.keySet()) {
+                if (unsortedMapClone.get(user).compareTo(unsortedMapClone.get(user2)) == -1){
                     biggest = false;
                 }
             }
             if (biggest){
                 sortedUsers.add(user);
-                unsortedMap.remove(user);
-                if (unsortedMap.size() == 0) {
+                unsortedMapClone.remove(user);
+                if (unsortedMapClone.size() == 0) {
+                    System.out.println("hei");
                     this.sorted_users = sortedUsers;
-                    controller.highscoreScene();
+                    for (User user2 : this.sorted_users) {
+                        user2.updatePb(users.get(user));
+                        System.out.println(user2.getPb());
+                    }
                     return sortedUsers;
                 }
-                this.sortUsers(unsortedMap, sortedUsers);
+                else{
+                    this.sortUsers(unsortedMapClone, sortedUsers);
+                    return sortedUsers;
+                }
             }
         }
         return sortedUsers;
     }
+    public void setLeaderboard() throws IOException{
+        this.restoreSavedUsers();
+            for (Group group : highscoresArr) {
+            Text name = new Text();
+            name.setFont(Font.font("Castellar", null, null, 14));
+            name.setTranslateX(group.getChildren().get(1).getLayoutX());
+            name.setTranslateY(group.getChildren().get(1).getLayoutY());
+            name.setText(this.sorted_users.get(highscoresArr.indexOf(group)).getUsername());
+            group.getChildren().remove(group.getChildren().get(1));
+            group.getChildren().add(name);
 
+            Text wpm = new Text();
+            wpm.setFont(Font.font("Castellar", null, null, 14));
+            wpm.setTranslateX(group.getChildren().get(1).getLayoutX());
+            wpm.setTranslateY(group.getChildren().get(1).getLayoutY());
+            for (User user : users.keySet()) {
+                System.out.println(user);
+                System.out.println(this.sorted_users.get(highscoresArr.indexOf(group)));
+                if (user.getUsername().equals((this.sorted_users.get(highscoresArr.indexOf(group)).toString()).split(" ")[0])){
+                wpm.setText(users.get(user).getScore()+"WPM");
+                }
+            }
+            group.getChildren().remove(group.getChildren().get(1));
+            group.getChildren().add(wpm);
+
+            Text accuracy = new Text();
+            accuracy.setFont(Font.font("Castellar", null, null, 14));
+            accuracy.setTranslateX(group.getChildren().get(1).getLayoutX());
+            accuracy.setTranslateY(group.getChildren().get(1).getLayoutY());
+            for (User user : users.keySet()) {
+                if (user.getUsername().equals((this.sorted_users.get(highscoresArr.indexOf(group)).toString()).split(" ")[0])){
+                accuracy.setText(users.get(user).getAccuracy()+"ACC");
+                }
+            }
+            group.getChildren().remove(group.getChildren().get(1));
+            group.getChildren().add(accuracy);
+        }
+    }
+    public static void setLeaderboardArr(List<Group> highscoreArr){
+        Highscores.highscoresArr = highscoreArr;
+    }
 }

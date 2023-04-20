@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
@@ -10,7 +11,7 @@
    <children>
       <Pane layoutX="-6.0" layoutY="-1.0" prefHeight="82.0" prefWidth="647.0" style="-fx-background-color: #e9e9e9;">
          <children>
-            <Text fx:id="timer" layoutX="281.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" wrappingWidth="85.2767333984375">
+            <Text fx:id="timer" layoutX="281.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="59:59" wrappingWidth="85.2767333984375">
                <font>
                   <Font name="Castellar" size="24.0" />
                </font>
@@ -48,5 +49,6 @@
             <Font name="Castellar" size="24.0" />
          </font>
       </Text>
+      <Button fx:id="highscoreBtn" layoutX="294.0" layoutY="413.0" mnemonicParsing="false" onAction="#switchScenes" opacity="0.0" text="Button" />
    </children>
 </AnchorPane>

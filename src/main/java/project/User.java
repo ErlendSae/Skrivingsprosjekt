@@ -17,7 +17,7 @@ public class User {
     public User(){
         this.username = "guest"+ random.nextInt(10000);
         this.password = null;
-        this.pb = new Score(0, 0);
+        this.pb = new Score();
     }
 
     //constructor for new account

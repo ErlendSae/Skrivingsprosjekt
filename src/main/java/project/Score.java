@@ -12,6 +12,14 @@ public class Score implements Comparable<Score>{
         this.wpm = wpm;
         this.accuracy = accuracy;
     }
+    public float setWpm(float wpm){
+        this.wpm = wpm;
+        return this.wpm;
+    }
+    public float setAccuracy(float accuracy){
+        this.accuracy = wpm;
+        return this.accuracy;
+    }
     public float getScore() {
         return wpm;
     }

@@ -16,6 +16,8 @@ public class NewAccController extends StartpageController{
     @FXML
     private Hyperlink logInBtn2, guestLink;
 
+    private Highscores highscores = new Highscores();
+
     //metode som sender deg til spillet etter en validering
     @FXML
      public void validateRegister(ActionEvent event) throws IOException{
@@ -25,13 +27,13 @@ public class NewAccController extends StartpageController{
         else if (!inpPassword1.getText().equals(inpPassword2.getText())) throw new IllegalArgumentException("passwords not equal");
         
         
-        Highscores.updateUsers(new User(inpText.getText(), inpPassword1.getText()), new Score());
+        highscores.updateUsers(new User(inpText.getText(), inpPassword1.getText()), new Score());
 
         this.enterWindow(event);
     }
 
     //metode som validerer passordet
-    private void validatePassword(PasswordField password){
+    public void validatePassword(PasswordField password){
         String password_string = password.getText().toString();
         char[] chars = password_string.toCharArray();
 

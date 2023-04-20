@@ -13,27 +13,15 @@ public class LoginController extends StartpageController{
    @FXML
    private Hyperlink registerBtn, guestLink;
 
-   private User inpUser = new User();
+   private Login loginPage = new Login();
 
     @FXML
     public void validateLogin(ActionEvent event) throws IOException{
-        Highscores.restoreSavedUsers();
-        boolean nameIncluded = false;
-        for (User user : Highscores.getUsers().keySet()) {
-            if (this.inpText.getText().equals(user.getUsername())){
-                this.inpUser = user;
-                nameIncluded = true;
-                if (!this.inpPassword.getText().equals(user.getPassword())){
-                    throw new IllegalArgumentException("password is incorrect");
-                }
-            }
-        }
-        if (!nameIncluded) throw new IllegalArgumentException("no user with this name");
+        this.loginPage.validateLogin(inpText, inpPassword);
         this.enterWindow(event);
     }
     @FXML
     public void enterWindow(ActionEvent event) throws IOException{
-        TypingGame.setUser(new User(inpText.getText(), inpPassword.getText(), this.inpUser.getPb()));
         this.newWindow(event);
     }
 
