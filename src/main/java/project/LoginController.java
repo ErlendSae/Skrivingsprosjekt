@@ -17,7 +17,7 @@ public class LoginController extends StartpageController{
 
     @FXML
     public void validateLogin(ActionEvent event) throws IOException{
-        this.loginPage.validateLogin(inpText, inpPassword);
+        this.loginPage.enterGame(inpText, inpPassword);
         this.enterWindow(event);
     }
     @FXML

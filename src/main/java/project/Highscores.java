@@ -119,7 +119,7 @@ public class Highscores{
             name.setFont(Font.font("Castellar", null, null, 14));
             name.setTranslateX(group.getChildren().get(1).getLayoutX());
             name.setTranslateY(group.getChildren().get(1).getLayoutY());
-            name.setText(this.sorted_users.get(highscoresArr.indexOf(group)).getUsername());
+            name.setText(this.sorted_users.get(highscoresArr.indexOf(group)-1).getUsername());
             group.getChildren().remove(group.getChildren().get(1));
             group.getChildren().add(name);
 
@@ -128,11 +128,9 @@ public class Highscores{
             wpm.setTranslateX(group.getChildren().get(1).getLayoutX());
             wpm.setTranslateY(group.getChildren().get(1).getLayoutY());
             for (User user : users.keySet()) {
-                System.out.println(user);
-                System.out.println(this.sorted_users.get(highscoresArr.indexOf(group)));
-                if (user.getUsername().equals((this.sorted_users.get(highscoresArr.indexOf(group)).toString()).split(" ")[0])){
+                // if (user.getUsername().equals((this.sorted_users.get(highscoresArr.indexOf(group)).toString()).split(" ")[0])){
                 wpm.setText(users.get(user).getScore()+"WPM");
-                }
+                // }
             }
             group.getChildren().remove(group.getChildren().get(1));
             group.getChildren().add(wpm);

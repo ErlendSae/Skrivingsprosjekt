@@ -4,13 +4,4 @@ guest1391 null 0.0 0.0
 guest9845 null 0.0 0.0
 guest190 null 1.0 100.0
 guest1295 null 47.0 60.869564
-guest1896 null 5.0 0.0
-guest9215 null 2.0 100.0
-guest7389 null 10.0 83.33333
-guest8962 null 7.0 96.77419
-guest2415 null 0.0 0.0
-guest3578 null 0.0 0.0
-guest748 null 43.0 38.461536
-guest9242 null 12.0 77.77778
-guest4850 null 1.0 100.0
-guest7206 null 0.0 0.0
+Test Hei1 6.0 94.117645

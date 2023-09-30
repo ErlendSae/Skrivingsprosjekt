@@ -25,14 +25,10 @@ public class TypingGame{
     private Button highscoreBtn;
     private static List<Text> wordsArr = new ArrayList<>();
 
-    private int milliseconds = 60000; //denne verdien er 1 slik at counter vil telle fra 1:00:00
+    private int milliseconds = 60000;
     private static User playingUser;
-    private static int secondsPassed = 0;
     private Highscores highscores = new Highscores();
 
-    public int getSecondsPassed(){
-        return secondsPassed;
-    }
     
     public void setUserText(Text userText){
         this.userText = userText;
@@ -89,7 +85,7 @@ public class TypingGame{
         }
     }
     public List<Text> getWords(){
-        return this.wordsArr;
+        return wordsArr;
     }
 
     
@@ -99,9 +95,9 @@ public class TypingGame{
     timeline.setCycleCount(60000);
     timeline.getKeyFrames().add(new KeyFrame(Duration.millis(1), eachSecond()));
     timeline.play();
-    System.out.println(timeline.getStatus());
     timeline.setOnFinished(this.replaceWithHighscore());
     }
+
     private EventHandler<ActionEvent> eachSecond(){
         return new EventHandler<ActionEvent>() {
 

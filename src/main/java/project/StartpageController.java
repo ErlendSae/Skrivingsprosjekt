@@ -43,9 +43,6 @@ public class StartpageController {
         else if (event.getSource().equals(gameBtn)){//går til spillet
             root = FXMLLoader.load(getClass().getResource("Game.fxml"));
         }
-        else if (event.getSource().equals(gameBtn)){//går til spillet
-            root = FXMLLoader.load(getClass().getResource("Game.fxml"));
-        }
         else if (event.getSource().equals(guestBtn)){//går til spillet
             TypingGame.setUser(new User());
             root = FXMLLoader.load(getClass().getResource("Game.fxml"));
