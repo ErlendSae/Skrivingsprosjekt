@@ -105,9 +105,7 @@ public class TypingGame{
             public void handle(ActionEvent event) {
                 String currentText = TypingGame.this.countDown.getText();
                 TypingGame.this.milliseconds -= 1;
-                System.out.println(currentText);
                 if (TypingGame.this.milliseconds < 10000){ //dersom det er under 10 sekunder igjen
-                    System.out.println(TypingGame.this.milliseconds);
 
                     if (TypingGame.this.milliseconds < 100){
                         TypingGame.this.countDown.setText("00:" + ("" + TypingGame.this.milliseconds));
