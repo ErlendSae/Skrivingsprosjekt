@@ -1,4 +1,4 @@
-package project;
+package project.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +13,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import project.core.Highscores;
+import project.core.Score;
+import project.core.User;
+import project.util.WordsProvider;
 
 public class TypingGame{
     private WordsProvider wordsProvider = new WordsProvider();

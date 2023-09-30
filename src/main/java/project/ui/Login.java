@@ -1,8 +1,10 @@
-package project;
+package project.ui;
 
 import java.io.IOException;
 
 import javafx.scene.control.TextField;
+import project.core.Highscores;
+import project.core.User;
 
 public class Login {
     private Highscores highscores = new Highscores();

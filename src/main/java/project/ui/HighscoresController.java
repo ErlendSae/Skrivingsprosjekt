@@ -1,10 +1,11 @@
-package project;
+package project.ui;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import project.core.Highscores;
 
 public class HighscoresController {
 

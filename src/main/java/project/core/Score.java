@@ -1,4 +1,4 @@
-package project;
+package project.core;
 
 public class Score implements Comparable<Score>{
     private float wpm;

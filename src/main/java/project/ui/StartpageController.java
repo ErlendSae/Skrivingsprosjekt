@@ -1,4 +1,4 @@
-package project;
+package project.ui;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import project.core.User;
 
 public class StartpageController {
 

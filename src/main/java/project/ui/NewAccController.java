@@ -1,4 +1,4 @@
-package project;
+package project.ui;
 
 import java.io.IOException;
 
@@ -7,6 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import project.core.Highscores;
+import project.core.Score;
+import project.core.User;
 
 public class NewAccController extends StartpageController{
     @FXML

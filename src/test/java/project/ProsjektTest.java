@@ -10,6 +10,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import project.core.Highscores;
+import project.core.Score;
+import project.core.User;
+import project.ui.Login;
+import project.ui.NewAccController;
+import project.ui.TypingGame;
+
 
 public class ProsjektTest {
     

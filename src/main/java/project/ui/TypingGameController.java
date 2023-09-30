@@ -1,4 +1,4 @@
-package project;
+package project.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;

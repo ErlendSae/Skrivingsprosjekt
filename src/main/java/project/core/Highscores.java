@@ -1,4 +1,4 @@
-package project;
+package project.core;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import javafx.scene.Group;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import project.util.UserToFile;
 
 public class Highscores{
     private static Map<User,Score> users = new HashMap<>();
