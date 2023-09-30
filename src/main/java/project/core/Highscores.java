@@ -14,7 +14,6 @@ import project.util.UserToFile;
 
 public class Highscores{
     private static Map<User,Score> users = new HashMap<>();
-    
     private static List<String> saved_users = new ArrayList<>();
     private static List<Group> highscoresArr = new ArrayList<>();
     private static List<User> sorted_users = new ArrayList<>();
@@ -52,7 +51,9 @@ public class Highscores{
             }
         }
         if (!match){
+            System.out.println(users);
             users.put(newUser, score);
+            System.out.println(users);
             String newLine = new String(newUser.toString() +  " " + score.toString());
             inputArray.add(newLine);
         }
@@ -73,6 +74,7 @@ public class Highscores{
     }
     public Map<User,Score> restoreSavedUsers() throws IOException{
         saved_users = UserToFile.readLines("/project/datalagring.txt", true);
+        System.out.println(saved_users);
         users = saved_users.stream() //streamer igjennom de ulike linjene fra tekstfilen
         .map(element -> element.split(" ")) //splitter hvert linje basert på mellomrom
         .collect(Collectors.toMap(key -> new User(key[0], key[1]),value -> new Score(Float.parseFloat(value[2]),Float.parseFloat(value[3]))));
@@ -110,16 +112,13 @@ public class Highscores{
     }
     public void setLeaderboard() throws IOException{
         this.restoreSavedUsers();
+        System.out.println(users);
             for (Group group : highscoresArr) {
-            System.out.println(highscoresArr);
-            System.out.println(group);
-            System.out.println(sorted_users);
             Text name = new Text();
             name.setFont(Font.font("Castellar", null, null, 14));
             name.setTranslateX(group.getChildren().get(1).getLayoutX());
             name.setTranslateY(group.getChildren().get(1).getLayoutY());
-                System.out.println(highscoresArr.indexOf(group));
-                name.setText(sorted_users.get(highscoresArr.indexOf(group)).getUsername());
+            name.setText(sorted_users.get(highscoresArr.indexOf(group)).getUsername());
             group.getChildren().remove(group.getChildren().get(1));
             group.getChildren().add(name);
 
@@ -132,6 +131,7 @@ public class Highscores{
                 if (user.getUsername().equals((sorted_users.get(highscoresArr.indexOf(group)).toString()).split(" ")[0])){
                 wpm.setText(users.get(user).getScore()+"WPM");
                 }
+
             }
             group.getChildren().remove(group.getChildren().get(1));
             group.getChildren().add(wpm);
@@ -144,6 +144,7 @@ public class Highscores{
                 if (user.getUsername().equals((sorted_users.get(highscoresArr.indexOf(group)).toString()).split(" ")[0])){
                 accuracy.setText(users.get(user).getAccuracy()+"ACC");
                 }
+                
             }
             group.getChildren().remove(group.getChildren().get(1));
             group.getChildren().add(accuracy);
