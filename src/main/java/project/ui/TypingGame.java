@@ -143,7 +143,6 @@ public class TypingGame{
                 try {
                     TypingGame.this.updateUsers();
                     TypingGame.this.highscores.sortUsers(TypingGame.this.highscores.getUsers(), new ArrayList<>());
-                    System.out.println(TypingGame.this.highscores.getUsers());
                     TypingGame.this.highscoreBtn.fire();
                     TypingGame.this.highscores.setLeaderboard();
                 } catch (IOException e) {

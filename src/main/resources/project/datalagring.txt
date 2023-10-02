@@ -10,3 +10,4 @@ Yagg Test1 9.0 83.33333
 idk I1 3.0 100.0
 guest4395 null 8.0 50.0
 Siste A1 0.0 0.0
+guest6360 null 0.0 0.0

@@ -51,9 +51,7 @@ public class Highscores{
             }
         }
         if (!match){
-            System.out.println(users);
             users.put(newUser, score);
-            System.out.println(users);
             String newLine = new String(newUser.toString() +  " " + score.toString());
             inputArray.add(newLine);
         }
@@ -74,7 +72,6 @@ public class Highscores{
     }
     public Map<User,Score> restoreSavedUsers() throws IOException{
         saved_users = UserToFile.readLines("/project/datalagring.txt", true);
-        System.out.println(saved_users);
         users = saved_users.stream() //streamer igjennom de ulike linjene fra tekstfilen
         .map(element -> element.split(" ")) //splitter hvert linje basert på mellomrom
         .collect(Collectors.toMap(key -> new User(key[0], key[1]),value -> new Score(Float.parseFloat(value[2]),Float.parseFloat(value[3]))));
@@ -112,7 +109,6 @@ public class Highscores{
     }
     public void setLeaderboard() throws IOException{
         this.restoreSavedUsers();
-        System.out.println(users);
             for (Group group : highscoresArr) {
             Text name = new Text();
             name.setFont(Font.font("Castellar", null, null, 14));
